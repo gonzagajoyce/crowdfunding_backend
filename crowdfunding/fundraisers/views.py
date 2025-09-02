@@ -82,7 +82,7 @@ class PledgeListView(APIView):
                 status=status.HTTP_400_BAD_REQUEST
                 )
         
-class PledgeDetail(APIView):
+class PledgeDetailView(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSupporterOrReadOnly]
 
     def get_pledge(self,pk):

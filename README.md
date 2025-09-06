@@ -3,41 +3,48 @@ Joyce Gonzaga
 
 ## Planning:
 ### Concept/Name
-SEEDS OF ENGLISH is more than just a fundraiser, it’s a chance to PLANT THE SEEDS OF KNOWLEDGE AND OPPORTUNITY in the lives of children from underprivileged communities in Brazil. Every donation helps a child take their first steps toward learning English, opening doors to new possibilities, brighter futures, and the power to dream bigger. Donors can see the impact of their contributions and be part of this exciting journey of growth and hope.
+ENGLISH FOR HOPE is more than just a fundraiser, it’s a movement to spark dreams and transform futures!
+Through campaigns, we give children from underprivileged communities in Brazil the chance to learn English, a skill that opens doors to brighter opportunities, global connections, and the confidence to dream bigger. 
+Every donation is a step toward change, and donors can directly see the impact of their contributions, becoming part of an inspiring journey of growth and hope.
 
 ### Intended Audience/User Stories
-Target audience: adults who want to support children’s education and social causes.
+Target Audience: Adults who care about education, social causes, and making a positive impact in children’s lives.
+
 User Stories:
-As a donor, I want to see the fundraiser and donate easily.
-As a donor, I want to donate a custom amount to make a difference.
-As an admin, I want to see the total donations collected.
-As a user, I want to receive confirmation when my donation is processed.
+As a donor, I want to explore fundraisers and donate easily.
+As a donor, I want to choose a custom amount so I can contribute in a way that feels personal.
+As a donor, I want to receive a confirmation so I know my contribution was successful.
+As a donor, I want to feel inspired by the impact of my donation.
+As an admin, I want to track total donations collected across campaigns.
 
 ### Front End Pages/Functionality
-Home Page / Fundraiser
 Displays fundraiser name, inspiring description, goal amount, and total raised.
-Button to donate.
+"Donate" button leading to the donation page.
 
 Donation Page
-Form to enter donation amount.
+Simple form to enter a donation amount (customizable).
 Confirmation message after donation.
-Thank you message highlighting the impact of the contribution.
+Thank you message showing the positive impact of the contribution.
 
-Admin Dashboard (Optional)
-View total donations collected.
+Admin Dashboard
+View total donations collected per fundraiser.
+Manage campaigns and track progress.
 
 ### API Spec
-{{ Fill out the table below to define your endpoints. An example of what this might look like is shown at the bottom of the page. 
 
-It might look messy here in the PDF, but once it's rendered it looks very neat! 
-
-It can be helpful to keep the markdown preview open in VS Code so that you can see what you're typing more easily. }}
-
-| URL              | HTTP Method | Purpose                | Request Body   | Success Response Code | Authentication/Authorisation |
-| ---------------- | ----------- | ---------------------- | -------------- | --------------------- | ---------------------------- |
-| /fundraiser/     | GET         | Get fundraiser details | N/A            | 200                   | Public                       |
-| /donations/      | POST        | Create a donation      | {"amount": 50} | 201                   | Optional                     |
-| /donations/<id>/ | GET         | View donation details  | N/A            | 200                   | Admin only                   |
+| URL                   | HTTP Method | Purpose                        | Request Body                                                                 | Success Response Code | Authentication/Authorisation        |
+| ---------------------- | ----------- | ------------------------------ | ---------------------------------------------------------------------------- | --------------------- | ----------------------------------- |
+| /fundraisers/          | GET         | Get all fundraisers            | N/A                                                                          | 200                   | Public                              |
+| /fundraisers/          | POST        | Create a new fundraiser        | {"title": "", "description": "", "goal": 1000, "image": "", "is_open": true} | 201                   | Authenticated user only             |
+| /fundraisers/<id>/     | GET         | Get fundraiser details         | N/A                                                                          | 200                   | Public                              |
+| /fundraisers/<id>/     | PUT         | Update fundraiser              | {"title": "", "description": "", "goal": 1200, "is_open": false}             | 200                   | Owner only                          |
+| /pledges/              | GET         | Get all pledges                | N/A                                                                          | 200                   | Public                              |
+| /pledges/              | POST        | Create pledge                  | {"amount": 50, "comment": "", "anonymous": false, "fundraiser": 1}           | 201                   | Authenticated user only             |
+| /pledges/<id>/         | PUT         | Update pledge                  | {"amount": 75, "comment": "updated comment"}                                 | 200                   | Supporter only                      |
+| /users/                | GET         | Get all users                  | N/A                                                                          | 200                   | Public                              |
+| /users/auth/           | POST        | Create user account (signup)   | {"username": "", "password": ""}                                             | 201                   | Public                              |
+| /users/<id>/           | PUT         | Update user details            | {"username": "new_name", "password": "new_pass"}                             | 200                   | Owner only                          |
+| /api-token-auth/       | POST        | Get Auth Token (login)         | {"username": "", "password": ""}                                             | 200                   | Public                              |
 
 
 ### DB Schema
